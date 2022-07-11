@@ -1,38 +1,97 @@
+body {
+  background-color: #282c34;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.letterBox {
+  background-color: #373A40;
+  width: 75px;
+  height: 75px;
+  border-radius: 10px;
+  margin-top: 15px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.space {
+  background-color: inherit;
+}
+
+.letterBox:nth-child(n+1){
+  margin-left: 15px;
+}
+
+.letterBox > p {
+  text-transform: uppercase;
+  color: rgb(102, 255, 110);
+  font-size: 4rem;
+  line-height: 110%;
+  padding: 0;
+  margin: 0;
+}
+
+.break {
+  width: 100%;
+  height: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.incorrect {
+  text-transform: uppercase;
+  font-size: 4rem;
+  background-color: rgb(165, 55, 55);
+  border-radius: 10px;
+  line-height: 110%;
+  padding: 0;
+  margin: 0;
+  width: 75px;
+  height: 75px;
+}
+
+.incorrect:nth-child(n+1) {
+  margin-top: 5px;
+}
+
+.a-keyboard {
+  display: none;
+}
+
+@media screen and (max-width: 700px) {
+  .letterBox {
+    width: 50px;
+    height: 50px;
+    margin-top: 5px;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  
+  .letterBox:nth-child(n+1){
+    margin-left: 5px;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .letterBox > p {
+    font-size: 3rem;
+    line-height: 95%;
+  }
+
+  .incorrect {
+    text-transform: uppercase;
+    font-size: 3rem;
+    background-color: rgb(165, 55, 55);
+    border-radius: 10px;
+    line-height: 95%;
+    width: 50px;
+    height: 50px;
+    margin-top: 5px;
+  }
+
+  .a-keyboard {
+    display: block;
+    background-color: #373A40 !important;
+    min-height: 140px !important;
+  }
+
+  .a-keyboard > .hg-button {
+    background-color: #282c34 !important;
   }
 }
