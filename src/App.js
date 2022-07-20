@@ -69,8 +69,7 @@ const Input = ({ phrase, correct }) => {
       if (
         formattedPhrase.substring(formattedPhrase.lastIndexOf("\n") + 1)
           .length +
-          (word.length + 1) <=
-        8
+          (word.length + 1) <= 7
       ) {
         formattedPhrase += ` ${word}`;
         continue;
@@ -83,7 +82,7 @@ const Input = ({ phrase, correct }) => {
   }
 
   return (
-    <Group position={"left"} spacing={0}>
+    <Group position={"left"} spacing={0} sx={{ background:'#1C1D21', padding: '8px 4px 16px 4px', borderRadius: '5px' }}>
       {LetterArray().map((el, i) => {
         let classes = "letterBox";
 
@@ -104,7 +103,12 @@ const Hangman = ({ incorrect }) => {
   if (!incorrect) return;
 
   return (
-    <Group sx={{ minHeight: "100px" }} mx={'auto'} >
+    <Group 
+      sx={{ minHeight: "120px"}} 
+      mx={'auto'} 
+      mt={'auto'} 
+      position={'center'}
+      spacing={'xs'}>
         {incorrect.map((el, i) => {
           return (
             <div key={i} className={"incorrect"}>
@@ -236,8 +240,7 @@ function App() {
       lock = true;
       Confetti();
       win = true;
-      console.log('lock',lock);
-      console.log('win',win);
+      setFinalScreen({ show: true, type: 'win' })
     }
     setPhrase({ ...phrase });
   }; 
@@ -274,7 +277,7 @@ function App() {
           header={
             <Header height={60} p="xs" sx={{ position: "sticky" }}>
               <Stack dir="row">
-                <Title>HANGMAN</Title>
+                <Title>PHRASES</Title>
               </Stack>
             </Header>
           }
@@ -293,10 +296,21 @@ function App() {
               padding: "16px",
             }}
           >
-            <Stack justify="space-between" sx={{ height: "100%" }}>
-              <Hangman incorrect={phrase.Incorrect} />
-              <Input phrase={phrase.Text} correct={phrase.Correct}/>
-              <Keyboard keyboardRef={r => (keyboard = r)} onKeyPress={onKeyPress} theme={'a-keyboard hg-theme-default'} layout={{default: keyboardLayout}} />
+            <Stack sx={{ height: "90%" }}>
+              <Input 
+                phrase={phrase.Text} 
+                correct={phrase.Correct}
+                mt={'auto'}
+                />
+              <Hangman 
+                incorrect={phrase.Incorrect} 
+              />
+              <Keyboard
+                keyboardRef={r => (keyboard = r)} 
+                onKeyPress={onKeyPress} 
+                theme={'a-keyboard hg-theme-default'} 
+                layout={{default: keyboardLayout}} 
+                />
             </Stack>
           </Container>
           <Modal 
